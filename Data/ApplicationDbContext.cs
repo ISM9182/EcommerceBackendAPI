@@ -1,6 +1,5 @@
-// Crie este arquivo em: EcommerceBackendAPI/Data/ApplicationDbContext.cs
 using Microsoft.EntityFrameworkCore;
-using EcommerceBackendAPI.Models; // Certifique-se de que o namespace da sua entidade está aqui
+using EcommerceBackendAPI.Models; 
 
 namespace EcommerceBackendAPI.Data
 {
@@ -11,8 +10,8 @@ namespace EcommerceBackendAPI.Data
         {
         }
 
-        // Crie uma propriedade DbSet para cada entidade que você deseja gerenciar
+        
         public DbSet<Product> Products { get; set; }
-        // Se você adicionar outras entidades, crie um DbSet para elas também
+        
     }
 }

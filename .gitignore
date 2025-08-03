@@ -1,0 +1,52 @@
+# Binaries
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio Cache
+.vs/
+*.suo
+*.user
+*.useros
+*.pdb
+*.csi
+*.cache
+
+# Visual Studio Code Cache
+.vscode/
+
+# Package manager files
+*.nupkg
+*.snupkg
+*.lock.json
+
+# Logs
+logs/
+*.log
+*.tlog
+
+# NuGet
+.nuget/
+*.nuget/
+packages/
+
+# Resharper/Rider
+.idea/
+*.resharper
+*.dotsettings
+
+# Test Results
+TestResults/
+*.trx
+
+# User-specific files
+*.vspscc
+*.vssscc
+*.vspcc
+*.bak
+*.scc
+
+# OSX files
+.DS_Store
+
+# Thumbs.db
+Thumbs.db

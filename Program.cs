@@ -1,4 +1,3 @@
-// No topo do arquivo Program.cs, adicione os using necessários
 using Microsoft.EntityFrameworkCore;
 using EcommerceBackendAPI.Data;
 using EcommerceBackendAPI.Interfaces;
@@ -19,7 +18,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -28,8 +26,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// >>> ADICIONE ESTA LINHA AQUI <<<
-app.MapControllers(); // ESSA LINHA É CRUCIAL PARA ENCONTRAR SEUS CONTROLADORES
+app.MapControllers(); 
 
 var summaries = new[]
 {

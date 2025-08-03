@@ -1,4 +1,3 @@
-// Local: EcommerceBackendAPI/Repositories/ProductRepository.cs
 
 using EcommerceBackendAPI.Data;
 using EcommerceBackendAPI.Interfaces;
@@ -23,7 +22,6 @@ namespace EcommerceBackendAPI.Repositories
             return await _context.Products.ToListAsync();
         }
 
-        // Alterado o tipo de retorno para Task<Product?> para permitir nulo
         public async Task<Product?> GetByIdAsync(int id)
         {
             return await _context.Products.FindAsync(id);
