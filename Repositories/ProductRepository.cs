@@ -1,0 +1,54 @@
+// Local: EcommerceBackendAPI/Repositories/ProductRepository.cs
+
+using EcommerceBackendAPI.Data;
+using EcommerceBackendAPI.Interfaces;
+using EcommerceBackendAPI.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace EcommerceBackendAPI.Repositories
+{
+    public class ProductRepository : IProductRepository
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ProductRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IEnumerable<Product>> GetAllAsync()
+        {
+            return await _context.Products.ToListAsync();
+        }
+
+        // Alterado o tipo de retorno para Task<Product?> para permitir nulo
+        public async Task<Product?> GetByIdAsync(int id)
+        {
+            return await _context.Products.FindAsync(id);
+        }
+
+        public async Task AddAsync(Product product)
+        {
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Product product)
+        {
+            _context.Entry(product).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+            }
+        }
+    }
+}
