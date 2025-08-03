@@ -30,7 +30,7 @@ A aplicação pode ser compilada e executada utilizando Docker.
 
 1.  **Clone este repositório:**
     ```bash
-    git clone [SUA_URL_DO_REPOSITORIO_GITHUB]
+    git clone https://github.com/ISM9182/EcommerceBackendAPI.git
     cd EcommerceBackendAPI
     ```
 
@@ -54,20 +54,30 @@ A aplicação pode ser compilada e executada utilizando Docker.
     docker ps
     ```
     (Print da saída do `docker ps` mostrando o contêiner `ecommerce-api-container` como 'Up')
+    {
+
+
+PS C:\Users\Ismael\EcommerceBackendAPI> docker ps
+CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS          
+PORTS                                         NAMES
+f49ac5e19720   ecommerce-api   "dotnet EcommerceBac…"   43 minutes ago   Up 43 minutes   0.0.0.0:5037->8080/tcp, [::]:5037->8080/tcp   ecommerce-api-container
+
+
+    }
 
 ## Evidências de Funcionamento (Prints de Tela)
 
-Aqui estão as evidências do funcionamento da API, testada via Postman/Insomnia, rodando dentro do contêiner Docker.
+Aqui estão as evidências do funcionamento da API, testada via Postman, rodando dentro do contêiner Docker.
 
 ### 1. Criar Produto (POST /api/Products)
 
 (IMAGEM DO POSTMAN/INSOMNIA MOSTRANDO A REQUISIÇÃO POST COM STATUS 201 E O CORPO DA RESPOSTA)
-![Print da Requisição POST](caminho/para/sua/imagem-post.png)
+![Print da Requisição POST](Meu Drive/WEB/imagem03.png)
 
 ### 2. Listar Todos os Produtos (GET /api/Products)
 
 (IMAGEM DO POSTMAN/INSOMNIA MOSTRANDO A REQUISIÇÃO GET ALL COM STATUS 200 E O CORPO DA RESPOSTA)
-![Print da Requisição GET All](caminho/para/sua/imagem-get-all.png)
+<img width="827" height="597" alt="Captura de tela 2025-08-03 182340" src="https://github.com/user-attachments/assets/2318c512-ac34-47d1-8f00-70e1b7648004" />
 
 ### 3. Buscar Produto por ID (GET /api/Products/{id})
 
