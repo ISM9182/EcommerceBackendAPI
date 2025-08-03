@@ -49,87 +49,69 @@ A aplicação pode ser compilada e executada utilizando Docker.
     ```
     * A API estará disponível em `http://localhost:5037`.
 
-4.  **Verifique se o contêiner está rodando:**
-    ```bash
-    docker ps
-    ```
-    (Print da saída do `docker ps` mostrando o contêiner `ecommerce-api-container` como 'Up')
-    {
-
-
-PS C:\Users\Ismael\EcommerceBackendAPI> docker ps
-CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS          
-PORTS                                         NAMES
-f49ac5e19720   ecommerce-api   "dotnet EcommerceBac…"   43 minutes ago   Up 43 minutes   0.0.0.0:5037->8080/tcp, [::]:5037->8080/tcp   ecommerce-api-container
-
-
-    }
 
 ## Evidências de Funcionamento (Prints de Tela)
 
-Aqui estão as evidências do funcionamento da API, testada via Postman, rodando dentro do contêiner Docker.
+Abaixo, demonstro o funcionamento da API com testes realizados via Postman, executando a aplicação a partir do contêiner Docker..
 
-### 1. Criar Produto (POST /api/Products)
 
-(IMAGEM DO POSTMAN/INSOMNIA MOSTRANDO A REQUISIÇÃO POST COM STATUS 201 E O CORPO DA RESPOSTA)
-![Print da Requisição POST](Meu Drive/WEB/imagem03.png)
+### 1. Verificação do Contêiner Docker
 
-### 2. Listar Todos os Produtos (GET /api/Products)
+Este print confirma que o contêiner `ecommerce-api-container` está ativo e em execução, com o mapeamento de portas correto.
 
-(IMAGEM DO POSTMAN/INSOMNIA MOSTRANDO A REQUISIÇÃO GET ALL COM STATUS 200 E O CORPO DA RESPOSTA)
-<img width="827" height="597" alt="Captura de tela 2025-08-03 182340" src="https://github.com/user-attachments/assets/2318c512-ac34-47d1-8f00-70e1b7648004" />
+![Print da Saída do Docker PS](Imagens/docker-ps.png)
 
-### 3. Buscar Produto por ID (GET /api/Products/{id})
+### 2. Criar Produto (POST /api/Products)
 
-(IMAGEM DO POSTMAN/INSOMNIA MOSTRANDO A REQUISIÇÃO GET BY ID COM STATUS 200 E O CORPO DA RESPOSTA)
-![Print da Requisição GET By ID](caminho/para/sua/imagem-get-by-id.png)
+(IMAGEM DO POSTMAN MOSTRANDO A REQUISIÇÃO POST COM STATUS 201 E O CORPO DA RESPOSTA)
+![Print da Requisição POST](Imagens/Post.png)
 
-### 4. Atualizar Produto (PUT /api/Products/{id})
+### 3. Listar Todos os Produtos (GET /api/Products)
 
-(IMAGEM DO POSTMAN/INSOMNIA MOSTRANDO A REQUISIÇÃO PUT COM STATUS 204)
-![Print da Requisição PUT](caminho/para/sua/imagem-put.png)
+(IMAGEM DO POSTMAN MOSTRANDO A REQUISIÇÃO GET ALL COM STATUS 200 E O CORPO DA RESPOSTA)
+![Print da Requisição GET All](Imagens/Get.png)
 
-### 5. Deletar Produto (DELETE /api/Products/{id})
+### 4. Buscar Produto por ID (GET /api/Products/{id})
 
-(IMAGEM DO POSTMAN/INSOMNIA MOSTRANDO A REQUISIÇÃO DELETE COM STATUS 204)
-![Print da Requisição DELETE](caminho/para/sua/imagem-delete.png)
+(IMAGEM DO POSTMAN MOSTRANDO A REQUISIÇÃO GET BY ID COM STATUS 200 E O CORPO DA RESPOSTA)
+![Print da Requisição GET By ID](Imagens/Get ID.png)
 
+### 5. Atualizar Produto (PUT /api/Products/{id})
+
+(IMAGEM DO POSTMAN MOSTRANDO A REQUISIÇÃO PUT COM STATUS 204)
+![Print da Requisição PUT](Imagens/Put.png)
+
+### 6. Deletar Produto (DELETE /api/Products/{id})
+
+(IMAGEM DO POSTMAN MOSTRANDO A REQUISIÇÃO DELETE COM STATUS 204)
+![Print da Requisição DELETE](Imagens/Delete.png)
+
+
+
+## Integração com o Frontend `Ecommerce-RetroDrive` (Trabalho 2)
+
+Este backend foi cuidadosamente projetado para ser **compatível com a API esperada pelo frontend `Ecommerce-RetroDrive`**, desenvolvido no trabalho anterior.
+
+**Sobre a Demonstração da Integração e o Trabalho 2 Original:**
+
+No trabalho anterior, o `Ecommerce-RetroDrive` foi entregue utilizando `json-server` para simular o backend. Para não alterar a versão já submetida do Trabalho 2, que depende do `json-server`, este repositório (`EcommerceBackendAPI`) é um backend C# e Docker **separado e independente**.
+
+
+Para **demonstrar a integração** entre este novo backend e o frontend `Ecommerce-RetroDrive` (Trabalho 2), pode-se fazer o seguinte em um ambiente de desenvolvimento local:
+
+
+1.  Garanta que este backend (`EcommerceBackendAPI`) esteja rodando via Docker, conforme os passos explicados acima. A API estará ativa em `http://localhost:5037`.
+2.  Em uma **cópia local** do projeto `Ecommerce-RetroDrive` (o frontend React), basta **temporariamente** ajustar a URL base da API para `http://localhost:5037`. Esta alteração no nosso caso é no arquivo ProductContext.tsx na linha:const API_BASE_URL = 'http://localhost:5000';.
+3.  Após ajustar a URL, inicie o frontend `Ecommerce-RetroDrive` (geralmente com `npm start` ou `yarn start`).
+4.  Com ambos (backend Docker e frontend React) rodando, as operações de CRUD realizadas na interface do `Ecommerce-RetroDrive` serão encaminhadas para este novo backend, mostrando a integração completa.
+5.  
+**É importante notar que, conforme o requisito de "pelo menos uma entidade", este backend implementa as operações CRUD especificamente para a entidade `Product`. Portanto, ao testar a integração com o `Ecommerce-RetroDrive`, apenas as funcionalidades relacionadas a produtos (na página ou seção de produtos) serão atendidas por este novo backend.**
+futuramente irei intregar todas as intidades mas por enquanto por falta de tempo só integre a página produtos .
 ---
 
-**Para incluir as imagens no `README.md`:**
+Espero que este `README.md` atenda a todas as expectativas para a avaliação. Fico à disposição para quaisquer dúvidas.
 
-1.  Salve seus prints de tela em uma pasta dentro do seu repositório (ex: `docs/images/`).
-2.  No `README.md`, use a sintaxe `![Descrição da Imagem](caminho/para/sua/imagem.png)`.
+Atenciosamente,
 
----
-
-### **3. Integração com o `Ecommerce-RetroDrive` (Trabalho 2)**
-
-A integração com seu frontend (o `Ecommerce-RetroDrive` do trabalho 2) acontece **alterando a URL da API no seu código frontend**.
-
-No seu projeto React do `Ecommerce-RetroDrive` (ou seja, o frontend), você deve ter um lugar onde a URL base da API é configurada. Provavelmente, é algo como `http://localhost:XXXX/api/...`.
-
-**Você precisará mudar essa URL para apontar para o seu backend Dockerizado:**
-
-* **Altere a URL da API no seu frontend React para `http://localhost:5037`**.
-    * Se, por exemplo, seu frontend estava fazendo requisições para `http://localhost:5000/api/products`, agora ele deve fazer para `http://localhost:5037/api/products`.
-
-Depois de mudar a URL no seu frontend React, você precisará:
-
-1.  Salvar as alterações no seu projeto `Ecommerce-RetroDrive`.
-2.  Iniciar o seu frontend React (geralmente com `npm start` ou `yarn start`).
-3.  Com o backend Dockerizado rodando (`docker ps` mostrando `Up`) e o frontend React iniciado, você poderá navegar no seu site `Ecommerce-RetroDrive` e as operações de adicionar, ver, editar e deletar produtos (ou a entidade que você escolheu) deverão funcionar através do backend rodando no Docker.
-
-Seu professor provavelmente testará isso acessando seu frontend e vendo as operações funcionarem.
-
----
-
-**Em resumo, o que você precisa fazer agora é:**
-
-1.  Criar/Editar o `README.md` na pasta raiz do seu backend.
-2.  Inserir os prints de tela de todos os testes CRUD bem-sucedidos no `README.md`.
-3.  Seu código C# (SOLID) já parece OK, mas você pode revisá-lo.
-4.  Certificar-se de que o repositório GitHub para este backend está atualizado com tudo isso.
-5.  **Mudar a URL da API no seu projeto React (`Ecommerce-RetroDrive`) para `http://localhost:5037`** e testar a integração.
-
-Me avise se tiver qualquer dúvida sobre esses passos! Você está quase lá!
+[Nome: João Ismael Gonçalves Ferreira
+Matrícula: 557277]
